@@ -1,24 +1,17 @@
 import logo from './logo.svg';
 import './App.css';
+import { useAppContext } from './context/Appcontext';
+import { useDispatch } from 'react-redux';
+import { printclg } from './redux/reduxSlice';
 
 function App() {
+  const { contextstate } = useAppContext()
+  const dispatch = useDispatch()
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {contextstate}
+      <button onClick={()=> dispatch(printclg('i am from redux'))}>redux check console</button>
+    </>
   );
 }
 
